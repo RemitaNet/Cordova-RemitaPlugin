@@ -12,8 +12,7 @@
   </js-module>
 
   <dependency id="it.mobimentum.phonegapspinnerplugin" url="https://github.com/mobimentum/phonegap-plugin-loading-spinner.git"  />
-  <dependency id="org.apache.cordova.core.inappbrowser" url="https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git"  />
-  
+   
   
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
