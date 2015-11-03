@@ -1,0 +1,37 @@
+﻿<plugin id="com.remita.plugin" version="0.7.0" xmlns="http://www.phonegap.com/ns/plugins/1.0">
+  <name>Remita Mobile</name>
+  
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+  
+  
+  <asset src="remita.js" target="js/remita.js"/>
+  <js-module src="remita.js" name="remita">
+    <clobbers target="remita"/>
+  </js-module>
+
+  <dependency id="it.mobimentum.phonegapspinnerplugin" url="https://github.com/mobimentum/phonegap-plugin-loading-spinner.git"  />
+  <dependency id="org.apache.cordova.inappbrowser" url="https://github.com/apache/cordova-plugin-inappbrowser.git"  />
+  
+  
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="remita">
+        <param name="android-package" value="com.remita.plugin"/>
+      </feature>
+    </config-file>
+   </platform>
+  
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="remita">
+        <param name="ios-package" value="com.remita.plugin"/>
+      </feature>
+    </config-file>
+   </platform>
+  
+  <platform name="wp7">
+    
+  </platform>
+</plugin>
