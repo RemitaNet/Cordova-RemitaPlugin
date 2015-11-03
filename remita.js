@@ -14,7 +14,9 @@ Created by System Specs
             remita_ref.addEventListener('loadstart', function (event) {
                 
 
-
+                remita_ref.executeScript({
+                    code: "BillerCtrl.init();"
+                });
 
                 spinnerplugin.show();
                
