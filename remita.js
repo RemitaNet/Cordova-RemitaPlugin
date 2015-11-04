@@ -4,59 +4,54 @@ Remita JS Plugin
 2nd November, 2015
 Created by System Specs
 */
- 
-    var RemitaController = {         
 
-        LaunchApp: function (url, callback)
-        { 
+var RemitaController = {
 
-            var remita_ref = window.open(url, '_blank', 'location=no');
-            remita_ref.addEventListener('loadstart', function (event) {
-                
+    LaunchApp: function (url, callback) {
+
+        var remita_ref = window.open(url, '_blank', 'location=no,clearcache=yes');
+        remita_ref.addEventListener('loadstart', function (event) {
+
+            spinnerplugin.show();
+
+        });
+        remita_ref.addEventListener('loadstop', function (event) {
+
+
+            spinnerplugin.hide();
+
+            setInterval(function () {
 
                 remita_ref.executeScript({
-                    code: "BillerCtrl.init();"
-                });
+                    code: "BillerCtrl.CordovaHandler();"
+                },
+                        function (values) {
 
-                spinnerplugin.show();
-               
-            });
-            remita_ref.addEventListener('loadstop', function (event) {
-                
+                            if (values[0] !== null) {
+                                callback(values[0]);
+                                remita_ref.close();
+                                remita_ref.removeEventListener('loadstop', function () {
+
+                                });
 
 
-                spinnerplugin.hide();
+                            }
 
-                setInterval(function () {
-
-                    remita_ref.executeScript({
-                        code: "BillerCtrl.CordovaHandler();"
-                    },
-                            function (values) {
-                                 
-                                if (values[0] !== null)
-                                {
-                                    callback(values[0]);
-
-                                    remita_ref.close();
-                                }
-                                
-                            });
+                        });
 
 
 
-                }, 1000);
-
-                
-
-                  });
-            remita_ref.addEventListener('loaderror', function (event) {   });
-            remita_ref.addEventListener('exit', function (event)  {
-            });
+            }, 2000);
 
 
-            
-        } 
+
+        });
+        remita_ref.addEventListener('loaderror', function (event) { });
+        remita_ref.addEventListener('exit', function (event) {
+        });
+
+
+
+    }
 
 }
- 
