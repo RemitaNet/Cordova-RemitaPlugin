@@ -18,9 +18,16 @@ var RemitaController = {
         remita_ref.addEventListener('loadstop', function (event) {
 
 
-            spinnerplugin.hide();
+
+            setTimeout(function () {
+                spinnerplugin.hide();
+
+            }, 3000);
+
 
             setInterval(function () {
+
+
 
                 remita_ref.executeScript({
                     code: "BillerCtrl.CordovaHandler();"
