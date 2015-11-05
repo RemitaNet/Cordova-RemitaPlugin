@@ -46,7 +46,7 @@ var RemitaController = {
 
 
         });
-        remita_ref.addEventListener('loaderror', function (event) { alert("Unable to connect. Check your connection."); });
+        remita_ref.addEventListener('loaderror', function (event) { spinnerplugin.hide(); alert("Unable to connect. Check your connection."); remita_ref.close(); });
         remita_ref.addEventListener('exit', function (event) {
         });
 
