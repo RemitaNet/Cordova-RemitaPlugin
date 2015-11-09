@@ -9,7 +9,7 @@ var RemitaController = {
 
     LaunchApp: function (url, callback) {
 
-        var remita_ref = window.open(url, '_blank', 'location=no,clearcache=yes,zoom=no');
+        var remita_ref = window.open(url, '_blank', 'location=no,clearcache=yes,clearsessioncache=yes,zoom=no');
         remita_ref.addEventListener('loadstart', function (event) {
 
             spinnerplugin.show();
@@ -22,7 +22,7 @@ var RemitaController = {
             setTimeout(function () {
                 spinnerplugin.hide();
 
-            }, 3000);
+            }, 6000);
 
 
             setInterval(function () {
